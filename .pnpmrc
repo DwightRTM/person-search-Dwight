@@ -1,0 +1,3 @@
+shamefully-hoist=true
+prefer-workspace-root=true
+auto-install-peers=true

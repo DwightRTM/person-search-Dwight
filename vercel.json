@@ -1,9 +1,17 @@
 {
-    "version": 2,
-    "buildCommand": "pnpm build",
-    "installCommand": "pnpm install",
-    "framework": "nextjs",
-    "outputDirectory": ".next"
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install --no-optional",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "env": {
+    "PNPM_HOME": "/pnpm"
+  },
+  "build": {
+    "env": {
+      "SKIP_ENV_VALIDATION": "true"
+    }
   }
+}
   
   
