@@ -20,9 +20,7 @@ const users: User[] = [
 ]
 
 export async function searchUsers(query: string): Promise<User[]> {
-    console.log('Searching users with query:', query)
     const results = users.filter(user => user.name.toLowerCase().startsWith(query.toLowerCase()))
-    console.log('Search results:', results) 
     return results
 }
 
@@ -40,7 +38,6 @@ export async function deleteUser(id: string): Promise<void> {
         throw new Error(`User with id ${id} not found`)
     }
     users.splice(index, 1)
-    console.log(`User with id ${id} has been deleted.`)
     revalidatePath('/') // Revalidate the page or component path
 
 }
@@ -56,7 +53,6 @@ export async function updateUser(id: string, data: Partial<Omit<User, 'id'>>): P
     const validatedUser = userSchema.parse(updatedUser) // Ensure the updated data adheres to schema
 
     users[index] = validatedUser
-    console.log(`User with id ${id} has been updated.`)
     revalidatePath('/') // Revalidate the page or component path
 
     return validatedUser

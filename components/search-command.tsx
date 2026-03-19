@@ -130,7 +130,6 @@ export const SearchCommand = <T,>({
       const results = await onSearch(value)
       setItems(results)
     } catch (error) {
-      console.error('Error searching:', error)
       setItems([])
     } finally {
       setLoading(false)

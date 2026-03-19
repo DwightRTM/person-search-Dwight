@@ -8,7 +8,6 @@ import { toast } from "@/hooks/use-toast"
 export default function DeleteButton({ userId }: { userId: string }) {
   const handleDelete = async () => {
     try {
-      console.log('DeleteButton: Attempting to delete user with ID', userId)
       await deleteUser(userId)
       toast({
         title: "User Deleted",
@@ -16,7 +15,6 @@ export default function DeleteButton({ userId }: { userId: string }) {
         variant: "default",
       })
     } catch (error) {
-      console.error('DeleteButton: Error deleting user', error)
       toast({
         title: "Error",
         description: "An error occurred while deleting the user.",

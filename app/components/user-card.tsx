@@ -11,11 +11,8 @@ interface UserCardProps {
   user: User
 }
 
-console.log("UserCard module loaded");
-
 export default function UserCard({ user }: UserCardProps) {
   if (!user || !user.name) {
-    console.error("UserCard: Invalid user object", user);
     return <p>Error: Invalid user data</p>;
   }
 

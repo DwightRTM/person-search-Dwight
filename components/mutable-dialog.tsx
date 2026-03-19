@@ -51,19 +51,14 @@ export default function MutableDialog<T extends FieldValues>({
   const form = useForm<T>({
     resolver: async (values) => {
       try {
-        console.log('Form values before validation:', values); // Log the form values before validation
         const result = formSchema.parse(values);
-        console.log('Validation passed:', result); // Log the result after validation
         return { values: result, errors: {} };
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
        catch (err: any) {
         if (err.formErrors?.fieldErrors) {
-          // check if err is instance of ZodError then return the formErrors
-          console.log('Validation errors:',  err.formErrors.fieldErrors); // Log the validation errors
           return { values: {}, errors: err.formErrors.fieldErrors };
         }
-        console.error('Unexpected validation error:', err);
         return { values: {}, errors: {} };
       }
     },
@@ -82,14 +77,10 @@ export default function MutableDialog<T extends FieldValues>({
       throw new Error("No action function provided");
     }
 
-    console.log('calling submit');
     const actions = await action(data);  // Call the provided action directly
-
-    console.log('actions:', actions);
 
     if (actions.success) {
       const toastMessage = actions.message;
-      console.log('toastMessage:', toastMessage);
       toast({
         title: "Success",
         description: toastMessage,
@@ -97,7 +88,6 @@ export default function MutableDialog<T extends FieldValues>({
       });
     } else {
       const toastMessage = actions.message;
-      console.log('toastMessage:', toastMessage);
       toast({
         title: "Error",
         description: toastMessage || "Failed to add User",
