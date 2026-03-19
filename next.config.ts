@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       // Add any custom aliases here if needed
     }
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
